@@ -18,9 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path("admin/", admin.site.urls),
-    path("accounts/", include("accounts.urls")),  # e.g. /accounts/login/
-    path("stalls/",   include("stalls.urls")),      # e.g. /stalls/
-    path("orders/",   include("orders.urls")),      # e.g. /orders/new/
+    path('admin/',    admin.site.urls),
+    path("admin/",    admin.site.urls),
+    path("home/",     include("home.urls")),     # e.g. /home for introduction home page.
+    path("conf/",     include("conf.urls")),     # e.g. /conf for account aand settings
+    path("stall/",    include("customer.urls")), # e.g. /stall for shop management.
+    path("customer/", include("stall.urls")),    # e.g. /customer for customer orders.
 ]
