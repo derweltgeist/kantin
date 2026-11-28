@@ -1,6 +1,6 @@
 {% load static tailwind_tags %}
 <!DOCTYPE html>
-<html lang="en" data-theme="cupcake">
+<html lang="id" data-theme="cupcake">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +9,7 @@
 </head>
 <body class="min-h-screen bg-base-200">
   <div class="navbar bg-base-100 shadow-sm px-6">
-    <a class="btn btn-ghost text-xl" href="/">Kantin</a>
+    <a class="btn btn-ghost text-xl" href="{% url 'home' %}">Kantin</a>
   </div>
 
   <main class="max-w-5xl mx-auto p-6">
