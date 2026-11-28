@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block title %}Sign Up — Kantin{% endblock %}
+{% block content %}
+{% load static %}
+<div
+class="flex min-h-screen items-center justify-center pt-4 bg-linear-to-r from-sky-400 via-green-400 to-blue-700">
+    <div class="shadow-sm rounded bg-white p-10 w-full lg:w-1/2 min-h-screen">
+        <form method="post">
+            {% csrf_token %}
+            <h1 class="text-xl font-bold my-5">Login</p>
+            <p class="text-sm my-5 font-normal">
+                Make sure your account is activated.</p>
+            {% if form.non_field_errors %}
+            <div class="my-5 bg-red-100 text-red-900 p-5 text-sm">
+                <p>An error is detected.</p>
+                <span class="font-thin">{{ form.non_field_errors }}</span>
+            </div>
+            {% endif %}
+            <label class="text-sm font-normal my-5" for="{{ form.email.id_for_label }}">Enter Email</label>
+            <input
+                id="{{ form.email.id_for_label }}"
+                name="{{ form.email.name }}"
+                type="email"
+                value="{{ form.email.value|default:'' }}"
+                placeholder="Email here."
+                class="my-2 rounded border p-2 font-thin text-sm w-full"
+            >
+            {% if form.email.errors %}
+            <div class="my-5 text-sm bg-red-100 text-red-900 p-5">
+                <p>Error in email:</p>
+                <ul class="font-thin">
+                {% for error in form.email.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <label class="text-sm font-normal my-5" for="{{ form.password.id_for_label }}">Enter Password</label>
+            <div class="my-2 w-full flex flex-col md:flex-row">
+                <input
+                    id="{{ form.password.id_for_label }}"
+                    name="{{ form.password.name }}"
+                    type="password"
+                    placeholder="Password here."
+                    value="{{ form.password.value|default:'' }}"
+                    class="p-2 rounded border font-thin text-sm w-full lg:w-4/5"
+                >
+                <button
+                    data-toggle-password="{{ form.password.id_for_label }}"
+                    type="button"
+                    class="w-full md:w-1/5 p-2 m-0 mt-2 md:mt-0 md:ml-2 font-thin text-sm text-center rounded border bg-gray-900 border-gray-900 text-white hover:bg-white hover:text-black"
+                >Show</button>
+            </div>
+            {% if form.password.errors %}
+            <div class="my-5 text-sm bg-red-100 text-red-900 p-5">
+                <p>Error in password:</p>
+                <ul class="font-thin">
+                {% for error in form.password.errors %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+            <hr class="my-5">
+            <p class="my-5 font-normal text-sm">If you don't have an account, please sign up instead of login.</p>
+            <div class="w-full flex flex-col md:flex-row pt-5">
+                <button type="submit" class="text-sm my-5 md:mr-5 p-5 w-full lg:w-1/2 font-thin text-center rounded border bg-gray-900 border-gray-900 text-white hover:bg-white hover:text-black">
+                    Login
+                </button>
+                <a href="/conf/account/signup" class="text-sm my-5 lg:mr-0 lg:my-5 p-5 w-full lg:w-1/2 font-thin text-center rounded border bg-gray-900 border-gray-900 text-white hover:bg-white hover:text-black">
+                    Sign Up Instead
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+
+document.querySelectorAll("[data-toggle-password]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const input = document.getElementById(btn.dataset.togglePassword);
+        if (!input) return;
+
+        const isHidden = input.type === "password";
+        input.type = isHidden ? "text" : "password";
+        btn.innerText = isHidden ? "Hide" : "Show";
+    });
+  });
+
+</script>
+
+
+{% endblock %}
+

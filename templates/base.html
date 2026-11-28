@@ -10,9 +10,17 @@
 <body class="min-h-screen bg-base-200">
   <div class="navbar bg-base-100 shadow-sm px-6">
     <a class="btn btn-ghost text-xl" href="{% url 'home' %}">Kantin</a>
+<body class="min-h-screen bg-gray-400">
+  <div class="navbar bg-base-100 shadow-sm fixed top-0">
+    <div class="ml-10 navbar-start">
+      <a class="text-xl" href="/">Kantin</a>
+    </div>
+    <div class="mr-10 navbar-end gap-5">
+      <a class="text-md mr-5" href="/">Home</a>
+      <a class="text-md" href="/">Home</a>
+    </div>
   </div>
-
-  <main class="max-w-5xl mx-auto p-6">
+  <main>
     {% block content %}{% endblock %}
   </main>
 </body>
