@@ -21,6 +21,6 @@ urlpatterns = [
     path('admin/',    admin.site.urls),
     path("home/",     include("src.home.urls")),     # e.g. /home for introduction home page.
     path("conf/",     include("src.conf.urls")),     # e.g. /conf for account aand settings
-    path("stall/",    include("src.customer.urls")), # e.g. /stall for shop management.
-    path("customer/", include("src.stall.urls")),    # e.g. /customer for customer orders.
+    path("stall/",    include("src.stall.urls")), # e.g. /stall for shop management.
+    path("customer/", include("src.customer.urls")),    # e.g. /customer for customer orders.
 ]
